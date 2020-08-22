@@ -6,14 +6,13 @@
   height: 100%;
   display: flex;
   align-items: center;
-
-  line-height: 1.1;
 }
 
 .tweet {
-  font-size: 10vw;
   margin-top: -0.1em;
   margin-bottom: 0;
   padding: 1em;
   padding-top: 0.9em;
+
+  line-height: 1.15;
 }
