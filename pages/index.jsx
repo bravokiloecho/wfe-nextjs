@@ -36,7 +36,7 @@ const Home = ({ tweets }) => {
       >
         <Tweet
           tweet={activeTweet}
-          activeTweetIndex={activeTweetIndex}
+          totalTweets={tweets.length}
           setActiveTweetIndex={setActiveTweetIndex}
         />
       </main>
@@ -51,7 +51,7 @@ const Home = ({ tweets }) => {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const tweets = await fetchInitialTweets(true)
+  const tweets = await fetchInitialTweets()
   const tweetsShuffled = shuffleArray(tweets)
   // By returning { props: tweets }, the Blog component
   // will receive `tweets` as a prop at build time

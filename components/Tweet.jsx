@@ -1,14 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { useHotkeys } from 'react-hotkeys-hook'
+
 import styles from '@/styles/Tweet.module.css'
 
-const Tweet = ({ tweet, activeTweetIndex, setActiveTweetIndex }) => {
+const Tweet = ({ tweet, totalTweets, setActiveTweetIndex }) => {
+  const changeSlide = React.useCallback((direction = 'next') => {
+    setActiveTweetIndex((activeTweetIndex) => {
+      const mod = direction === 'previous' ? -1 : 1
+      let nextIndex = (activeTweetIndex + mod) % totalTweets
+      if (nextIndex < 0) nextIndex = totalTweets - 1
+      return nextIndex
+    })
+  }, [totalTweets, setActiveTweetIndex])
+  // KEYBOARD SHORTCUTS
+  useHotkeys('left', () => changeSlide('previous'))
+  useHotkeys('right', () => changeSlide('next'))
   return (
     <a
       className={[styles.tweetContainer].join(' ')}
       onClick={() => {
-        setActiveTweetIndex(activeTweetIndex + 1)
+        changeSlide('next')
       }}
       role="button"
       aria-label="Next tweet"
@@ -20,7 +33,7 @@ const Tweet = ({ tweet, activeTweetIndex, setActiveTweetIndex }) => {
 
 Tweet.propTypes = {
   tweet: PropTypes.object.isRequired,
-  activeTweetIndex: PropTypes.number.isRequired,
+  totalTweets: PropTypes.number.isRequired,
   setActiveTweetIndex: PropTypes.func.isRequired,
 }
 
