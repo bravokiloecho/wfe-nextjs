@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "GT-Haptik-Light-2";
+  src: url("/fonts/GT-Haptik-Light-2.eot?") format("eot"), url("/fonts/GT-Haptik-Light-2.woff") format("woff"), url("/fonts/GT-Haptik-Light-2.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "GT-Haptik-Light-Oblique-2";
+  src: url("/fonts/GT-Haptik-Light-Oblique-2.eot?") format("eot"), url("/fonts/GT-Haptik-Light-Oblique-2.woff") format("woff"), url("/fonts/GT-Haptik-Light-Oblique-2.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "GT-Haptik-Medium-2";
+  src: url("/fonts/GT-Haptik-Medium-2.eot?") format("eot"), url("/fonts/GT-Haptik-Medium-2.woff") format("woff"), url("/fonts/GT-Haptik-Medium-2.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "GT-Haptik-Medium-Oblique-2";
+  src: url("/fonts/GT-Haptik-Medium-Oblique-2.eot?") format("eot"), url("/fonts/GT-Haptik-Medium-Oblique-2.woff") format("woff"), url("/fonts/GT-Haptik-Medium-Oblique-2.ttf") format("truetype"); }
+
+* {
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 76, devAssets/sass/partials/_typography.scss */
+body {
+  font-family: 'GT-Haptik-Medium-2';
+  -webkit-font-smoothing: antialiased;
+	@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and ( min-device-pixel-ratio: 1.25), only screen and ( min-resolution: 200dpi), only screen and ( min-resolution: 1.25dppx) {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
