@@ -1,4 +1,6 @@
 export default {
-  black: '#242424',
-  white: '#f7f7f7',
+  colors: {
+    black: '#242424',
+    white: '#f7f7f7',
+  },
 }

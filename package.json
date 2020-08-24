@@ -10,6 +10,7 @@
   "dependencies": {
     "lodash-es": "^4.17.15",
     "next": "9.5.2",
+    "next-dark-mode": "^2.3.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hotkeys-hook": "^2.2.2",
