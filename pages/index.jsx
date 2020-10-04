@@ -51,7 +51,7 @@ const Home = ({ tweets }) => {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const tweets = await fetchInitialTweets()
+  const tweets = await fetchInitialTweets({ count: 100, forceLive: false })
   const tweetsShuffled = shuffleArray(tweets)
   // By returning { props: tweets }, the Blog component
   // will receive `tweets` as a prop at build time
