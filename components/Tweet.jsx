@@ -23,14 +23,21 @@ const Tweet = ({ tweet, totalTweets, setActiveTweetIndex }) => {
   useHotkeys('right', () => changeSlide('next'))
   // RESIZE FONT
   const { width: windowWidth, height: windowHeight } = useOnResize()
-  const fontSize = React.useMemo(() => {
+  const [textStyle, setTextStyle] = React.useState({ opacity: 0 })
+  React.useEffect(() => {
+    if (!windowWidth) return
     const totalCharacters = tweet.text.length
     const area = windowWidth * windowHeight
     const characterRatio = 90 / 80
     const size = area / (characterRatio * Math.log(totalCharacters) * 2000 * 1.6)
     const sizeMax = 80
     const sizeMin = 22
-    return `${clamp(size, sizeMin, sizeMax)}px`
+    const fontSize = clamp(size, sizeMin, sizeMax)
+    const newStyle = {
+      opacity: 1,
+      fontSize: `${fontSize}px`,
+    }
+    setTextStyle(newStyle)
   }, [windowWidth, windowHeight, tweet.text])
 
   return (
@@ -44,7 +51,7 @@ const Tweet = ({ tweet, totalTweets, setActiveTweetIndex }) => {
     >
       <p
         className={[styles.tweet].join(' ')}
-        style={{ fontSize }}
+        style={textStyle}
       >
         {tweet.text}
       </p>
