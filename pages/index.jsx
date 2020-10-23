@@ -35,7 +35,8 @@ const Home = ({ tweets }) => {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const tweets = await fetchInitialTweets({ count: 2, forceLive: true, maxTweets: 10, shuffle: true })
+  const tweets = await fetchInitialTweets({ count: 200, forceLive: false, shuffle: true })
+  // console.log('tweets', tweets)
   // will receive `tweets` as a prop at build time
   return {
     props: {
