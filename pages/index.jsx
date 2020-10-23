@@ -3,7 +3,7 @@ import React from 'react'
 import MetaHead from '@/MetaHead'
 import Tweet from '@/Tweet'
 
-import fetchInitialTweets from '@/helpers/fetchInitialTweets'
+import { fetchInitialTweets } from '@/helpers/fetchInitialTweets'
 import styles from '@/styles/Home.module.css'
 
 const shuffleArray = (array = []) => {
@@ -25,6 +25,7 @@ const shuffleArray = (array = []) => {
 }
 
 const Home = ({ tweets }) => {
+  console.log('tweets', tweets)
   const [activeTweetIndex, setActiveTweetIndex] = React.useState(0)
   const activeTweet = tweets[activeTweetIndex]
   return (
@@ -34,11 +35,13 @@ const Home = ({ tweets }) => {
       <main
         className={styles.main}
       >
-        <Tweet
-          tweet={activeTweet}
-          totalTweets={tweets.length}
-          setActiveTweetIndex={setActiveTweetIndex}
-        />
+        {activeTweet && (
+          <Tweet
+            tweet={activeTweet}
+            totalTweets={tweets.length}
+            setActiveTweetIndex={setActiveTweetIndex}
+          />
+        )}
       </main>
 
       {/* <footer className={styles.footer}>
@@ -51,13 +54,15 @@ const Home = ({ tweets }) => {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const tweets = await fetchInitialTweets({ count: 100, forceLive: false })
-  const tweetsShuffled = shuffleArray(tweets)
+  const tweets = await fetchInitialTweets({ count: 2, forceLive: true, maxTweets: 10 })
+  // const tweetsShuffled = shuffleArray(tweets)
   // By returning { props: tweets }, the Blog component
   // will receive `tweets` as a prop at build time
   return {
     props: {
-      tweets: tweetsShuffled,
+      // tweets: tweetsShuffled,
+      tweets,
+      revalidate: 86400,
     },
   }
 }

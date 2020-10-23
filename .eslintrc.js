@@ -71,6 +71,7 @@ module.exports = {
           ['@/copy', './copy'],
           ['@/constants', './constants'],
           ['@/helpers', './helpers'],
+          ['@/helpersApi', './helpersApi'],
           ['@', './components'],
           ["~", "."]
         ],
