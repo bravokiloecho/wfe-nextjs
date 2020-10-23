@@ -3,7 +3,7 @@ import React from 'react'
 import MetaHead from '@/MetaHead'
 import Tweet from '@/Tweet'
 
-import { fetchInitialTweets } from '@/helpers/fetchInitialTweets'
+import fetchInitialTweets from '@/helpers/fetchInitialTweets'
 import styles from '@/styles/Home.module.css'
 
 const shuffleArray = (array = []) => {
