@@ -29,7 +29,7 @@ const fetchFromCache = (cachedFile) => {
 
 // Generic function to fetch tweets
 const fetchTweets = async ({ count, maxTweets, shuffle }) => {
-  const endpoint = `${process.env.API_URL}api/fetchAllTweets?count=${count}&maxTweets=${maxTweets}&shuffle=${shuffle}`
+  const endpoint = `/api/fetchAllTweets?count=${count}&maxTweets=${maxTweets}&shuffle=${shuffle}`
   const res = await fetch(endpoint)
   const tweets = await res.json() || []
   return tweets
