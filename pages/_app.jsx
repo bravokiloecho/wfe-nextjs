@@ -6,7 +6,6 @@ import '@/styles/globals.css'
 import GlobalThemeStyles from '@/GlobalThemeStyles'
 
 function MyApp({ Component, pageProps }) {
-  console.log('MODE', MODE)
   return (
     <>
       <Component {...pageProps} />
