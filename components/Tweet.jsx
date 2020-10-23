@@ -68,4 +68,4 @@ Tweet.propTypes = {
   setActiveTweetIndex: PropTypes.func.isRequired,
 }
 
-export default Tweet
+export default React.memo(Tweet)
