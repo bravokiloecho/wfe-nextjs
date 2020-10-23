@@ -3,12 +3,21 @@ import React from 'react'
 import MetaHead from '@/MetaHead'
 import Tweet from '@/Tweet'
 
+import shuffleInitialTweets from '@/helpers/shuffleInitialTweets'
 import fetchInitialTweets from '@/helpers/fetchInitialTweets'
 import styles from '@/styles/Home.module.css'
 
-const Home = ({ tweets }) => {
+const Home = ({ tweets, shuffleTweets }) => {
+  // Shuffle first tweets to create sense of randomness on every page load
+  const [initialTweets, setInitialTweets] = React.useState([])
+  React.useEffect(() => {
+    const initialTweets = shuffleTweets ? shuffleInitialTweets(tweets, 100) : tweets
+    setInitialTweets(initialTweets)
+  // eslint-disable-next-line
+  }, [])
   const [activeTweetIndex, setActiveTweetIndex] = React.useState(0)
-  const activeTweet = tweets[activeTweetIndex]
+  const activeTweet = initialTweets[activeTweetIndex]
+  if (!initialTweets.length) return null
   return (
     <div className={styles.container}>
       <MetaHead />
@@ -19,7 +28,7 @@ const Home = ({ tweets }) => {
         {activeTweet && (
           <Tweet
             tweet={activeTweet}
-            totalTweets={tweets.length}
+            totalTweets={initialTweets.length}
             setActiveTweetIndex={setActiveTweetIndex}
           />
         )}
@@ -33,14 +42,14 @@ const Home = ({ tweets }) => {
 }
 
 export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const tweets = await fetchInitialTweets({ count: 200, forceLive: false, shuffle: true })
-  // console.log('tweets', tweets)
+  const shuffle = true
+  // Fetch tweets
+  const tweets = await fetchInitialTweets({ count: 200, forceLive: false, shuffle })
   // will receive `tweets` as a prop at build time
   return {
     props: {
       tweets,
+      shuffleTweets: shuffle,
       revalidate: 86400,
     },
   }
