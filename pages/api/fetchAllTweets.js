@@ -31,7 +31,8 @@ const fetchAllTweets = ({ count, maxTweets }) => {
 }
 
 export default async (req, res) => {
-  const { count, maxTweets, shuffle } = req.query
+  const { count, maxTweets: maxTweetsString, shuffle } = req.query
+  const maxTweets = parseInt(maxTweetsString, 0)
   const tweets = await fetchAllTweets({ count, maxTweets })
   res.statusCode = 200
   if (shuffle === 'true') {
