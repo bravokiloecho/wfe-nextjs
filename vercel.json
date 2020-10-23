@@ -1,8 +1,0 @@
-{
-  "env": {
-    "WFE_TWITTER_CONSUMER_KEY": "@wfe_twitter_consumer_key",
-    "WFE_TWITTER_CONSUMER_SECRET": "@wfe_twitter_consumer_secret",
-    "WFE_TWITTER_ACCESS_TOKEN_KEY": "@wfe_twitter_access_token_key",
-    "WFE_TWITTER_ACCESS_TOKEN_SECRET": "@wfe_twitter_access_token_secret"
-  }
-}
