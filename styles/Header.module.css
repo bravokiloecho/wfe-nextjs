@@ -1,0 +1,33 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  padding: 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.themeButton,
+.themeButtonInner {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  border: 0;
+  outline: 0;
+}
+
+.themeButton {
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.themeButtonInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  transition: transform 500ms ease;
+}

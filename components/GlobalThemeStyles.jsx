@@ -1,16 +1,8 @@
 import React from 'react'
-import { useTheme } from 'next-themes'
-
-import styleConstants from '@/styles/constants'
+import useThemeColors from '@/hooks/useThemeColors'
 
 const GlobalThemeStyles = () => {
-  const { theme } = useTheme()
-  const darkModeActive = theme === 'dark'
-  const { white, black } = styleConstants.colors
-  const colors = {
-    text: darkModeActive ? white : black,
-    backgroundColor: darkModeActive ? black : white,
-  }
+  const colors = useThemeColors()
 
   return (
     <style jsx global>{`

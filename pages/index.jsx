@@ -2,12 +2,13 @@ import React from 'react'
 
 import MetaHead from '@/MetaHead'
 import Tweet from '@/Tweet'
+import Header from '@/Header'
 
 import shuffleInitialTweets from '@/helpers/shuffleInitialTweets'
 import fetchInitialTweets from '@/helpers/fetchInitialTweets'
 import styles from '@/styles/Home.module.css'
 
-const Home = ({ tweets, shuffleTweets }) => {
+const Page = ({ tweets, shuffleTweets }) => {
   // Shuffle first tweets to create sense of randomness on every page load
   const [initialTweets, setInitialTweets] = React.useState([])
   React.useEffect(() => {
@@ -34,9 +35,7 @@ const Home = ({ tweets, shuffleTweets }) => {
         )}
       </main>
 
-      {/* <footer className={styles.footer}>
-        Footer
-      </footer> */}
+      <Header />
     </div>
   )
 }
@@ -58,4 +57,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Home
+export default Page
