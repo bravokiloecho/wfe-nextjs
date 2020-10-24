@@ -1,8 +1,9 @@
 import path from 'path'
 import fs from 'fs'
 
+import * as utils from '@/helpers/utils'
+
 // LOCAL CONSTANTS
-const isProduction = process.env.NODE_ENV === 'production'
 const cachedDataDir = './cache/'
 const currentPath = process.cwd()
 
@@ -14,7 +15,7 @@ const testUseCache = (forceLive, cachedFile) => {
   const cachedDataPath = path.resolve(currentPath, cachedFile)
   const cachedDataExists = fs.existsSync(cachedDataPath)
   // Check if cached data exists
-  const useCache = !isProduction && !forceLive && cachedDataExists
+  const useCache = !utils.isProduction && !forceLive && cachedDataExists
   return useCache
 }
 
@@ -29,7 +30,9 @@ const fetchFromCache = (cachedFile) => {
 
 // Generic function to fetch tweets
 const fetchTweets = async ({ count, maxTweets, shuffle }) => {
-  const endpoint = `${process.env.API_URL}api/fetchAllTweets?count=${count}&maxTweets=${maxTweets}&shuffle=${shuffle}`
+  const baseUrl = utils.getApiUrl()
+  console.log('baseUrl', baseUrl)
+  const endpoint = `${baseUrl}/api/fetchAllTweets?count=${count}&maxTweets=${maxTweets}&shuffle=${shuffle}`
   const res = await fetch(endpoint)
   const tweets = await res.json() || []
   return tweets

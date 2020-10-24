@@ -1,5 +1,5 @@
 import fetchTweets from '@/helpersApi/fetchTweets'
-import shuffleArray from '@/helpersApi/shuffleArray'
+import { shuffleArray } from '@/helpers/utils'
 
 const fetchAllTweets = ({ count, maxTweets }) => {
   const fetchAndBuild = async ({

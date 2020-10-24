@@ -1,4 +1,4 @@
-import shuffleArray from '@/helpersApi/shuffleArray'
+import { shuffleArray } from '@/helpers/utils'
 
 const shuffleInitialTweets = (tweets, shuffleCount = 100) => {
   const initialBatch = tweets.splice(0, shuffleCount)
