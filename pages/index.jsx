@@ -44,7 +44,7 @@ const Home = ({ tweets, shuffleTweets }) => {
 export async function getStaticProps() {
   const shuffle = true
   // Fetch tweets
-  const tweets = await fetchInitialTweets({ count: 200, forceLive: true, shuffle, maxTweets: 100 })
+  const tweets = await fetchInitialTweets({ count: 200, forceLive: false, shuffle })
     .catch((err) => {
       console.error(err)
     })

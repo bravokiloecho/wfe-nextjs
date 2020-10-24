@@ -31,11 +31,6 @@ const fetchFromCache = (cachedFile) => {
 
 // Generic function to fetch tweets
 const fetchTweets = async ({ count, maxTweets, shuffle }) => {
-  // const baseUrl = utils.getApiUrl(req)
-  // const endpoint = `${baseUrl}/api/fetchAllTweets?count=${count}&maxTweets=${maxTweets}&shuffle=${shuffle}`
-  // console.log('baseUrl', baseUrl)
-  // console.log('endpoint', endpoint)
-  // const res = await fetch(endpoint)
   const tweets = await fetchAllTweets({ count, maxTweets, shuffle })
   return tweets
 }
