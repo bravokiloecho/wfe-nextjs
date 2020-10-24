@@ -44,11 +44,11 @@ const Home = ({ tweets, shuffleTweets }) => {
 export async function getStaticProps() {
   const shuffle = true
   // Fetch tweets
-  const tweets = await fetchInitialTweets({ count: 200, forceLive: false, shuffle })
+  const tweets = [] // await fetchInitialTweets({ count: 200, forceLive: false, shuffle })
   // will receive `tweets` as a prop at build time
   return {
     props: {
-      tweets: [],
+      tweets,
       shuffleTweets: shuffle,
       revalidate: 86400,
     },
