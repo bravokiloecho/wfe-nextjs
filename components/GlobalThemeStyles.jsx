@@ -1,20 +1,15 @@
 import React from 'react'
-
-import { useDarkMode } from 'next-dark-mode'
+import { useTheme } from 'next-themes'
 
 import styleConstants from '@/styles/constants'
 
 const GlobalThemeStyles = () => {
-  const [ready, setReady] = React.useState(false)
-  const { darkModeActive, switchToDarkMode } = useDarkMode()
-  React.useEffect(() => {
-    switchToDarkMode()
-    setReady(true)
-  }, [switchToDarkMode])
+  const { theme } = useTheme()
+  const darkModeActive = theme === 'dark'
   const { white, black } = styleConstants.colors
   const colors = {
-    text: darkModeActive || !ready ? white : black,
-    backgroundColor: darkModeActive || !ready ? black : white,
+    text: darkModeActive ? white : black,
+    backgroundColor: darkModeActive ? black : white,
   }
 
   return (

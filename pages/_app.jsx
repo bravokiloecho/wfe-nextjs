@@ -1,4 +1,4 @@
-import withDarkMode, { MODE } from 'next-dark-mode'
+import { ThemeProvider } from 'next-themes'
 
 import '@/styles/fonts.css'
 import '@/styles/globals.css'
@@ -7,11 +7,11 @@ import GlobalThemeStyles from '@/GlobalThemeStyles'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <ThemeProvider defaultTheme="dark">
       <Component {...pageProps} />
       <GlobalThemeStyles />
-    </>
+    </ThemeProvider>
   )
 }
 
-export default withDarkMode(MyApp, { defaultMode: MODE.DARK })
+export default MyApp
