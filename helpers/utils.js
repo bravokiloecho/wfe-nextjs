@@ -22,8 +22,8 @@ export const trimTrailingSlash = (str) => {
   return str.replace(/\/$/, '')
 }
 
-export const getApiUrl = () => {
+export const getApiUrl = (req) => {
   const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  const url = isProduction ? `https://${vercelUrl}` : process.env.API_URL
+  const url = process.env.API_URL
   return trimTrailingSlash(url)
 }
