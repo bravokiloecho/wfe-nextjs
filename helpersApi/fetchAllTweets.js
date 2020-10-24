@@ -1,7 +1,7 @@
 import fetchTweets from '@/helpersApi/fetchTweets'
 import { shuffleArray } from '@/helpers/utils'
 
-const fetchAllTweets = ({ count, maxTweets }) => {
+const runFetchAllTweets = ({ count, maxTweets }) => {
   const fetchAndBuild = async ({
     cursor,
     previousTweets = [],
@@ -30,14 +30,12 @@ const fetchAllTweets = ({ count, maxTweets }) => {
   })
 }
 
-export default async (req, res) => {
-  const { count, maxTweets: maxTweetsString, shuffle } = req.query
-  const maxTweets = parseInt(maxTweetsString, 0)
-  const tweets = await fetchAllTweets({ count, maxTweets })
-  res.statusCode = 200
+const fetchAllTweets = async ({ count, maxTweets, shuffle }) => {
+  const tweets = await runFetchAllTweets({ count, maxTweets })
   if (shuffle === 'true') {
-    res.json(shuffleArray(tweets))
-    return
+    return shuffleArray(tweets)
   }
-  res.json(tweets)
+  return tweets
 }
+
+export default fetchAllTweets
