@@ -23,6 +23,7 @@ export const trimTrailingSlash = (str) => {
 }
 
 export const getApiUrl = () => {
-  const url = isProduction ? process.env.NEXT_PUBLIC_VERCEL_URL : process.env.API_URL
+  const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+  const url = isProduction ? `https://${vercelUrl}` : process.env.API_URL
   return trimTrailingSlash(url)
 }
