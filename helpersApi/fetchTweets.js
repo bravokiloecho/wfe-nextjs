@@ -20,6 +20,9 @@ const fetchTweets = async ({ count, cursor }) => {
     ...(cursor && { max_id: cursor }),
   }
   const tweets = await client.get('statuses/user_timeline', params)
+    .catch((err) => {
+      console.error(err)
+    })
   const tweetsText = tweets.map(({ id, full_text: text }) => {
     const link = `https://twitter.com/${params.screen_name}/status/${id}`
     return { id, link, text }

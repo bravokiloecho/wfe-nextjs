@@ -45,6 +45,9 @@ export async function getStaticProps() {
   const shuffle = true
   // Fetch tweets
   const tweets = await fetchInitialTweets({ count: 200, forceLive: true, shuffle, maxTweets: 100 })
+    .catch((err) => {
+      console.error(err)
+    })
   // will receive `tweets` as a prop at build time
   return {
     props: {

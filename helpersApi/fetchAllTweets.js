@@ -7,8 +7,13 @@ const runFetchAllTweets = ({ count, maxTweets }) => {
     previousTweets = [],
     initial = false,
     resolve,
+    reject,
   }) => {
     const tweets = await fetchTweets({ count, cursor })
+      .catch((err) => {
+        console.error(err)
+        reject(err)
+      })
     const { id: firstTweetId } = tweets[0] || {}
     const { id: lastTweetId } = tweets[tweets.length - 1] || {}
     const { id: previousTweetId } = previousTweets[previousTweets.length - 1] || {}
@@ -25,13 +30,16 @@ const runFetchAllTweets = ({ count, maxTweets }) => {
     // Else continue
     fetchAndBuild({ cursor: lastTweetId, previousTweets: mergedTweets, resolve })
   }
-  return new Promise((resolve) => {
-    fetchAndBuild({ resolve, initial: true })
+  return new Promise((resolve, reject) => {
+    fetchAndBuild({ resolve, reject, initial: true })
   })
 }
 
 const fetchAllTweets = async ({ count, maxTweets, shuffle }) => {
   const tweets = await runFetchAllTweets({ count, maxTweets })
+    .catch((err) => {
+      console.error(err)
+    })
   if (shuffle === 'true') {
     return shuffleArray(tweets)
   }
