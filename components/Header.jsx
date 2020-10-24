@@ -21,10 +21,7 @@ const Header = ({}) => {
       <a href="https://twitter.com/wordsfromearth">
         <TwitterIcon
           fill={theme === 'dark' ? white : black}
-          style={{
-            height: '2rem',
-            width: 'auto',
-          }}
+          className={styles.followIcon}
         />
       </a>
       {/* THEME BUTON */}

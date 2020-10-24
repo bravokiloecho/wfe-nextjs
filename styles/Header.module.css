@@ -11,23 +11,40 @@
 }
 
 .themeButton,
+.followIcon {
+  height: 1.5rem;
+  width: auto;
+}
+
+.themeButton,
 .themeButtonInner {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
   border-radius: 100%;
   border: 0;
   outline: 0;
 }
 
+@media only screen and (min-width: 600px) {
+  .themeButton,
+  .followIcon {
+    height: 2rem;
+  }
+
+  .themeButton,
+  .themeButtonInner {
+    width: 2rem;
+  }
+}
+
 .themeButton {
   position: relative;
-  /* overflow: hidden; */
 }
 
 .themeButtonInner {
   position: absolute;
   top: 0;
   left: 0;
+  height: 100%;
   z-index: 2;
   transition: transform 500ms ease;
 }
