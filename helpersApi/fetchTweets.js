@@ -1,15 +1,15 @@
 const Twitter = require('twitter-lite')
 
-const client = new Twitter({
-  subdomain: 'api', // "api" is the default (change for other subdomains)
-  version: '1.1', // version "1.1" is the default (change for other subdomains)
-  consumer_key: process.env.WFE_TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.WFE_TWITTER_CONSUMER_SECRET,
-  access_token_key: process.env.WFE_TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.WFE_TWITTER_ACCESS_TOKEN_SECRET,
-})
-
 const fetchTweets = async ({ count, cursor }) => {
+  console.log('process.env.WFE_TWITTER_CONSUMER_KEY', process.env.WFE_TWITTER_CONSUMER_KEY)
+  const client = new Twitter({
+    subdomain: 'api', // "api" is the default (change for other subdomains)
+    version: '1.1', // version "1.1" is the default (change for other subdomains)
+    consumer_key: process.env.WFE_TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.WFE_TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.WFE_TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.WFE_TWITTER_ACCESS_TOKEN_SECRET,
+  })
   const params = {
     screen_name: 'wordsfromearth',
     count,
