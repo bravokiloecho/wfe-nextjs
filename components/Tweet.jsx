@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import clamp from 'lodash/clamp'
 import { useHotkeys } from 'react-hotkeys-hook'
+import { isMobile } from 'react-device-detect'
 
 import useOnResize from '@/hooks/useOnResize'
 
@@ -28,6 +29,12 @@ const Tweet = ({ tweet, totalTweets, setActiveTweetIndex }) => {
   const [textStyle, setTextStyle] = React.useState({})
   React.useEffect(() => {
     if (!windowWidth) return
+    // Fixed size for portrait mobile
+    if (isMobile && windowHeight > windowWidth) {
+      setTextStyle({ fontSize: '7.4vw' })
+      setHideTweet(false)
+      return
+    }
     const totalCharacters = tweet.text.length
     const area = windowWidth * windowHeight
     const characterRatio = 90 / 80

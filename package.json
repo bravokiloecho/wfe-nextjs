@@ -13,6 +13,7 @@
     "next-dark-mode": "^2.3.0",
     "next-themes": "^0.0.5",
     "react": "16.13.1",
+    "react-device-detect": "^1.14.0",
     "react-dom": "16.13.1",
     "react-hotkeys-hook": "^2.2.2",
     "twitter-lite": "^0.14.0"
