@@ -11,14 +11,42 @@
 }
 
 .themeButton,
-.followIcon {
+.followIconPlus,
+.themeButtonInner {
   height: 1.5rem;
-  width: auto;
+  width: 1.5rem;
+}
+
+.followIconPlus {
+  position: relative;
+  transform: translateY(-0.15rem) scale(0.96);
+}
+
+.followIconPlus::before,
+.followIconPlus::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--textColor);
+  border-radius: 1px;
+}
+
+/* CROSS */
+.followIconPlus::before {
+  width: 95%;
+  height: 15%; 
+}
+
+/* DOWN */
+.followIconPlus::after {
+  height: 95%;
+  width: 15%;
 }
 
 .themeButton,
 .themeButtonInner {
-  width: 1.5rem;
   border-radius: 100%;
   border: 0;
   outline: 0;
@@ -26,25 +54,23 @@
 
 @media only screen and (min-width: 600px) {
   .themeButton,
-  .followIcon {
-    height: 2rem;
-  }
-
-  .themeButton,
+  .followIconPlus,
   .themeButtonInner {
+    height: 2rem;
     width: 2rem;
   }
 }
 
 .themeButton {
   position: relative;
+  background-color: var(--textColor);
 }
 
 .themeButtonInner {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   z-index: 2;
   transition: transform 500ms ease;
+  background-color: var(--bgColor);
 }

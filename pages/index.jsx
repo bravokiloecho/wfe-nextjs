@@ -23,6 +23,8 @@ const Page = ({ tweets, shuffleTweets }) => {
     <div className={styles.container}>
       <MetaHead />
 
+      <Header />
+
       <main
         className={styles.main}
       >
@@ -34,8 +36,6 @@ const Page = ({ tweets, shuffleTweets }) => {
           />
         )}
       </main>
-
-      <Header />
     </div>
   )
 }
