@@ -12,7 +12,7 @@ const Page = ({ tweets, shuffleTweets }) => {
   // Shuffle first tweets to create sense of randomness on every page load
   const [initialTweets, setInitialTweets] = React.useState([])
   React.useEffect(() => {
-    const initialTweets = shuffleTweets ? shuffleInitialTweets(tweets, 100) : tweets
+    const initialTweets = shuffleTweets ? shuffleInitialTweets(tweets, 250) : tweets
     setInitialTweets(initialTweets)
   // eslint-disable-next-line
   }, [])
