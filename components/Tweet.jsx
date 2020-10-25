@@ -14,14 +14,14 @@ const Tweet = ({ tweet, totalTweets, setActiveTweetIndex }) => {
   const changeSlide = React.useCallback((direction = 'next') => {
     setHideTweet(true)
     setActiveTweetIndex((activeTweetIndex) => {
-      const mod = direction === 'previous' ? -1 : 1
+      const mod = direction === 'prev' ? -1 : 1
       let nextIndex = (activeTweetIndex + mod) % totalTweets
       if (nextIndex < 0) nextIndex = totalTweets - 1
       return nextIndex
     })
   }, [totalTweets, setActiveTweetIndex])
   // KEYBOARD SHORTCUTS
-  useHotkeys('left', () => changeSlide('previous'))
+  useHotkeys('left', () => changeSlide('prev'))
   useHotkeys('right', () => changeSlide('next'))
   // RESIZE FONT
   const { width: windowWidth, height: windowHeight } = useOnResize()
@@ -40,15 +40,44 @@ const Tweet = ({ tweet, totalTweets, setActiveTweetIndex }) => {
     setHideTweet(false)
   }, [windowWidth, windowHeight, tweet.text])
 
+  const backButtonWidth = 25
+
   return (
-    <a
+    <div
       className={[styles.tweetContainer].join(' ')}
-      onClick={() => {
-        changeSlide('next')
-      }}
-      role="button"
-      aria-label="Next tweet"
     >
+      <div className={styles.tweetButtons}>
+        <a
+          role="button"
+          aria-label="Next tweet"
+          className={[styles.tweetButton].join(' ')}
+          onClick={() => {
+            changeSlide('next')
+          }}
+          style={{
+            right: 0,
+            width: `${100 - backButtonWidth}%`,
+            backgroundColor: 'red',
+          }}
+        >
+          Next tweet
+        </a>
+        <a
+          role="button"
+          aria-label="Previous tweet"
+          className={[styles.tweetButton].join(' ')}
+          onClick={() => {
+            changeSlide('prev')
+          }}
+          style={{
+            left: 0,
+            width: `${backButtonWidth}%`,
+            backgroundColor: 'green',
+          }}
+        >
+          Previous tweet
+        </a>
+      </div>
       <p
         className={[styles.tweet].join(' ')}
         style={{
@@ -58,7 +87,7 @@ const Tweet = ({ tweet, totalTweets, setActiveTweetIndex }) => {
       >
         {tweet.text}
       </p>
-    </a>
+    </div>
   )
 }
 
